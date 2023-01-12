@@ -32,7 +32,7 @@ export default function Header() {
             <Link legacyBehavior href="/projects">
               <a className="mr-5 hover:text-gray-900">Project</a>
             </Link>
-
+       
             <a
               href="https://open.kakao.com/o/s91Oe0Xe"
               className="mr-5 hover:text-gray-900"
