@@ -20,24 +20,24 @@ export default function Header() {
               >
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
               </svg>
-              <span className="ml-3 text-xl">성갱's Development Story</span>
+              <span className="ml-3 text-xl">KSK Development Story</span>
             </a>
           </Link>
 
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <Link legacyBehavior href="/">
-              <a className="mr-5 hover:text-gray-900">Home</a>
+              <a className="mr-5 hover:text-gray-900">홈</a>
             </Link>
 
             <Link legacyBehavior href="/projects">
-              <a className="mr-5 hover:text-gray-900">Project</a>
+              <a className="mr-5 hover:text-gray-900">프로젝트</a>
             </Link>
        
             <a
               href="https://open.kakao.com/o/s91Oe0Xe"
               className="mr-5 hover:text-gray-900"
             >
-              OpenTalk
+              오픈카톡
             </a>
           </nav>
           {/* 다크모드 토글 버튼 작업해야함 */}

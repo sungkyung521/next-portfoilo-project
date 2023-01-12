@@ -8,9 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout>    
       <Head>
-        <title>성갱's Development Story</title>
+        <title>KSK Development Story</title>
         <meta name="description" content="Next-portfolio-project" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

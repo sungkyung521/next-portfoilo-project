@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="flex justify-center">
         <Link legacyBehavior href="/projects">
           <a className="btn-project">
-            Go to Project
+            프로젝트 바로가기
           </a>
         </Link>
         </div>
