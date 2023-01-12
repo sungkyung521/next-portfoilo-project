@@ -42,7 +42,7 @@ export default function ProjectItem({data}){
                 objectFit="cover"
                 quality={100}
             />
-
+            
             <div className="p-4 flex flex-col">
                 <h1 className="text-2xl font-bold">{title}</h1>
                 <h3 className="mt-4 text-xl">{description}</h3>
