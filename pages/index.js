@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>Next-portfolio-project</title>
+        <title>성갱's Development Story</title>
         <meta name="description" content="Next-portfolio-project" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
