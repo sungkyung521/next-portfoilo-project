@@ -75,9 +75,11 @@ export default function Header() {
             >
               오픈카톡
             </a>
-          </nav>
-          {/* 다크모드 토글 버튼 작업해야함 */}
+    
+            {/* 다크모드 토글 버튼 작업해야함 */}
           <DarkModeToggleButton />
+          </nav>
+          
         </div>
       </header>
     </>
