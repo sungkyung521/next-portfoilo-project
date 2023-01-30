@@ -8,7 +8,7 @@ Header {
     top: 0;
     left: 0;
     right: 0;
-    height: 75px;
+    height: 110px;
     padding: 1rem;
     color: white;
     display: flex;
@@ -21,6 +21,7 @@ Header {
    
     padding-top: 100px;
 }
+
 
 .header-bg-color-d{
     background-color: black;
@@ -60,7 +61,8 @@ footer {
 }
 
 a {
-    @apply text-slate-500 hover:text-slate-700 hover:text-gray-400 dark:text-slate-400 dark:hover:text-slate-500   
+    @apply text-slate-500 hover:text-slate-700 hover:text-gray-400 dark:text-slate-400 dark:hover:text-slate-500
+
     
 }
 

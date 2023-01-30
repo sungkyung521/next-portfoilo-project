@@ -47,7 +47,7 @@ export default function Header() {
             <Link legacyBehavior href="/">
               <a
                 className={
-                  "mr-5  hover:text-gray-400 " +
+                  "mr-5 " +
                   (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
                 }
               >
@@ -58,7 +58,7 @@ export default function Header() {
             <Link legacyBehavior href="/projects">
               <a
                 className={
-                  "mr-5 hover:text-gray-400 " +
+                  "mr-5 " +
                   (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
                 }
               >
@@ -69,7 +69,7 @@ export default function Header() {
             <a
               href="https://open.kakao.com/o/s91Oe0Xe"
               className={
-                "mr-5 hover:text-gray-400 " +
+                "mr-5 " +
                 (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
               }
             >
@@ -77,7 +77,7 @@ export default function Header() {
             </a>
     
             {/* 다크모드 토글 버튼 작업해야함 */}
-          <DarkModeToggleButton />
+            <DarkModeToggleButton />
           </nav>
           
         </div>
