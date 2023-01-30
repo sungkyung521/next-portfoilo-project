@@ -10,6 +10,8 @@ export default function DarkModeToggleButton() {
       <button
         className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-4 md:mt-0
         hover:bg-gray-200
+        bg_slate-600
+        text-slate-400
         hover:text-orange-500
         dark:bg_slate-600
         dark:text-slate-400
@@ -24,7 +26,7 @@ export default function DarkModeToggleButton() {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="currentColor"
-          className="visible dark:invisible dark:h-0 dark:w-0 h-5 w-5"
+          className="visible dark:invisible dark:h-5 dark:w-0 h-5 w-5"
         >
           <path
             fillRule="evenodd"

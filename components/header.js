@@ -1,11 +1,23 @@
 import Link from "next/link";
 import DarkModeToggleButton from "./dark-mode-toggle-button";
 
+import { useTheme } from "next-themes";
+
+//theme :현재 값 가져오기
+//setTheme :현재 값 바꾸기
 export default function Header() {
+  const { theme } = useTheme();
+  console.log(theme == "dark" ? true : false);
+
   return (
     <>
-      <header className="text-gray-600 body-font">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <header
+        className={
+          "text-gray-400 body-font " +
+          (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+        }
+      >
+        <div className=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link legacyBehavior href="/">
             <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
               <svg
@@ -20,22 +32,46 @@ export default function Header() {
               >
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
               </svg>
-              <span className="ml-3 text-xl">김성경 개발 노트</span>
+              <span
+                className={
+                  "ml-3 text-sm hover:text-gray-400 " +
+                  (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+                }
+              >
+                CREATIVE KIM SUNG KYUNG
+              </span>
             </a>
           </Link>
 
           <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <Link legacyBehavior href="/">
-              <a className="mr-5 hover:text-gray-900">홈</a>
+              <a
+                className={
+                  "mr-5  hover:text-gray-400 " +
+                  (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+                }
+              >
+                홈
+              </a>
             </Link>
 
             <Link legacyBehavior href="/projects">
-              <a className="mr-5 hover:text-gray-900">프로젝트</a>
+              <a
+                className={
+                  "mr-5 hover:text-gray-400 " +
+                  (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+                }
+              >
+                프로젝트
+              </a>
             </Link>
-       
+
             <a
               href="https://open.kakao.com/o/s91Oe0Xe"
-              className="mr-5 hover:text-gray-900"
+              className={
+                "mr-5 hover:text-gray-400 " +
+                (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+              }
             >
               오픈카톡
             </a>
