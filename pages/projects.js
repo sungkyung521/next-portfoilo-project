@@ -12,12 +12,12 @@ export default function Projects({projects}) {
         <Layout >
             <div className="flex flex-col items-center justify-center min-h-screen px-3 mb-10">
                 <Head>
-                    <title>김성경 프로젝트</title>
+                    <title>KIM SUNG KYUNG PROJECTS</title>
                     <meta name="description" content="오늘도 빡코딩!" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
                 <h1 className="text-4xl font-bold sm:text-2xl">
-                    총 프로젝트 :
+                    ALL PROJECTS :
                     <span className="pl-4 text-blue-500">{projects.results.length}</span>
                 </h1>        
                 
@@ -34,6 +34,9 @@ export default function Projects({projects}) {
 
 // 빌드 타임에 호출
 // export async function getStaticProps() {
+    //getStaticProps
+    //getServerSideProps
+    //getStaticPaths
 
 // 각 요청 때마다 호출
 export async function getServerSideProps() {

@@ -51,7 +51,7 @@ export default function Header() {
                   (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
                 }
               >
-                홈
+                HOME
               </a>
             </Link>
 
@@ -62,7 +62,7 @@ export default function Header() {
                   (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
                 }
               >
-                프로젝트
+                PROJECTS
               </a>
             </Link>
 
@@ -73,7 +73,7 @@ export default function Header() {
                 (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
               }
             >
-              오픈카톡
+              KAKAO
             </a>
     
             {/* 다크모드 토글 버튼 작업해야함 */}

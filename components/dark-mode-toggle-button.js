@@ -8,10 +8,10 @@ export default function DarkModeToggleButton() {
   return (
     <>
       <button
-        className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none  rounded text-base mt-0 md:mt-0
-        hover:bg-gray-200
+        className="inline-flex items-center bg-gray-300 border-0  py-1 px-3 focus:outline-none  rounded text-base mt-0 md:mt-0
         bg_slate-600
         text-slate-400
+        hover:bg-gray-200
         hover:text-orange-500
         dark:bg_slate-600
         dark:text-slate-400

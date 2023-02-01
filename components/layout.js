@@ -3,9 +3,9 @@ import Footer from "./footer";
 
 export default function Layout({ children }) {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary ">
       <Header />
-      <div className="body-form">{children}</div>
+      <div className="body-form ">{children}</div>
       <Footer />
     </div>
   );
