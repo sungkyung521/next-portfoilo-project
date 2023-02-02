@@ -12,7 +12,7 @@ export default function Projects({projects}) {
         <Layout >
             <div className="flex flex-col items-center justify-center min-h-screen px-3 mb-10">
                 <Head>
-                    <title>Kim's Projects</title>
+                    <title>Kim Projects</title>
                     <meta name="description" content="오늘도 빡코딩!" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
