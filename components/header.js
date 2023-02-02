@@ -34,8 +34,7 @@ export default function Header() {
               </svg>
               <span
                 className={
-                  "ml-3 text-sm hover:text-gray-400 " +
-                  (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+                  "ml-3 text-sm hover:text-gray-400 header-text-color " 
                 }
               >
                 CREATIVE KIM SUNG KYUNG
@@ -47,8 +46,7 @@ export default function Header() {
             <Link legacyBehavior href="/">
               <a
                 className={
-                  "mr-5 " +
-                  (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+                  "mr-5 header-text-color " 
                 }
               >
                 HOME
@@ -58,8 +56,7 @@ export default function Header() {
             <Link legacyBehavior href="/projects">
               <a
                 className={
-                  "mr-5 " +
-                  (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+                  "mr-5 header-text-color "
                 }
               >
                 PROJECTS
@@ -69,8 +66,7 @@ export default function Header() {
             <a
               href="https://open.kakao.com/o/s91Oe0Xe"
               className={
-                "mr-5 " +
-                (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+                "mr-5 header-text-color " 
               }
             >
               KAKAO

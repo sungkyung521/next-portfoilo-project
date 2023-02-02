@@ -69,6 +69,7 @@ a {
     
 }
 
+
 p {
     @apply text-slate-500 dark:text-slate-400
 }
@@ -92,3 +93,7 @@ p {
        bottom: 10px;
 }
 
+.header-text-color{
+    @apply text-slate-200 hover:text-slate-500 hover:text-gray-400 dark:text-slate-900 dark:hover:text-slate-500
+
+}
