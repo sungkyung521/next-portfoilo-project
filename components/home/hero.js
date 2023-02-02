@@ -29,16 +29,16 @@ export default function Hero() {
           </svg>
         </div>
         <div className="mb-8 leading-relaxed">
-          <h2>Application Developer</h2>
-          <a>안녕하세요! 꾸준히 성장하는 개발자 김성경 입니다.</a>
+          <h1>Application Developer</h1>
+          <a>안녕하세요! 꾸준하게 성장하는 개발자 김성경 입니다.</a>
           <br />
-          <a>메모하는 습관으로 체계적이고 효율성을 찾는 개발자</a>
+          <a>메모하는 습관 통해 체계적이고 효율성을 찾는 개발자</a>
           <br />
           <a>나중에 NO! 지금 OK! 부지런한 개발자</a>
           <br />
           <a>꼼꼼하게 빈 틈을 채워나가는 개발자</a>
           <br />
-          <a>고객이 필요로 하는 것이 무엇인지 고민하는 개발자</a>
+          <a>고객이 원하는 니즈가 무엇인지 고민하는 개발자</a>
           <br />     
         </div>
         {/*Application Developer END*/}
@@ -61,9 +61,8 @@ export default function Hero() {
           </svg>
         </div>
         <div className="mb-8 leading-relaxed">
-          <h2>Stack</h2>
-
-          <h2>다룰 수 있는 기술/언어들 입니다.</h2>
+          <h1>Stack</h1>
+          <h2>주로 사용했던 기술/언어들 입니다.</h2>
           <div className="pb-4 pt-4">
             <a className="px-2 py-1 mr-2 rounded-md bg-red-300 dark:bg-red-300 w-30">
               MFC
@@ -71,28 +70,31 @@ export default function Hero() {
             <a className="px-2 py-1 mr-2 rounded-md bg-red-500 dark:bg-red-500 w-30">
               C++
             </a>
+            <a className="px-2 py-1 mr-2 rounded-md bg-indigo-600 dark:bg-indigo-600 w-30">
+              VB
+            </a>
+            <a className="px-2 py-1 mr-2 rounded-md bg-sky-400 dark:bg-sky-400 w-30">
+              PostgreSQL
+            </a>           
+          </div>
+
+          <h2>다룰 수 있는 기술/언어들 입니다.</h2>
+          <div className="pb-4 pt-4">
             <a className="px-2 py-1 mr-2 rounded-md bg-fuchsia-600 dark:bg-fuchsia-600 w-30">
               Java
             </a>
             <a className="px-2 py-1 mr-2 rounded-md bg-cyan-500 dark:bg-cyan-500 w-30">
               C#
-            </a>
-            <a className="px-2 py-1 mr-2 rounded-md bg-indigo-600 dark:bg-indigo-600 w-30">
-              VB
-            </a>
+            </a>            
             <br />
+           
           </div>
-
           <div className="pb-4">
-            <a className="px-2 py-1 mr-2 rounded-md bg-green-500 dark:bg-green-500 w-30">
+          <a className="px-2 py-1 mr-2 rounded-md bg-green-500 dark:bg-green-500 w-30">
               Oracle SQL
-            </a>
-            <a className="px-2 py-1 mr-2 rounded-md bg-sky-400 dark:bg-sky-400 w-30">
-              PostgreSQL
-            </a>
-            <br />
+            </a> 
           </div>
-          <div className="pb-4">
+          <div className="pb-4 ">
             <a className="px-2 py-1 mr-2 rounded-md bg-lime-600 dark:bg-lime-600 w-30">
               HTML
             </a>
@@ -140,7 +142,7 @@ export default function Hero() {
           </svg>
         </div>
         <div className="mb-8 leading-relaxed">
-          <h2>기본인적사항</h2>
+          <h1>Basic Personal Information</h1>
           <a>김성경 (SungKyung Kim)</a>
           <br />
           <a>Email : sungkyung521@gmail.com</a>
@@ -152,7 +154,7 @@ export default function Hero() {
         </div>
         {/* 03. 기본인적사항 END*/}
 
-        {/* 04. 학력 START*/}
+        {/* 04. 학력, 교육 START*/}
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -170,45 +172,21 @@ export default function Hero() {
           </svg>
         </div>
         <div className="mb-8 leading-relaxed">
-          <h2>학력</h2>
+          <h1>Education</h1>
           <a>
-            2016.03 ~ 2017.02 서일대학교 컴포터소프트웨어학과 (전공심화)
-            졸업/4.44(4.5)
+            2016.10 ~ 2017.04 [NCS] 기업이 요구하는 자바 웹 개발자 양성과정 / KH정보교육원
+          </a>
+          <br />
+          <a>
+            2016.03 ~ 2017.02 서일대학교 컴포터소프트웨어학과 (전공심화) 졸업/4.44(4.5)
           </a>
           <br />
           <a>2011.03 ~ 2016.02 서일대학교 인터넷정보과 졸업/4.06(4.5)</a>
           <br />
           <a>2006.03 ~ 2009.02 덕소고등학교(인문계)</a>
-          <br />
+          <br/>
         </div>
-        {/* 04. 학력 END*/}
-
-        {/* 05. 교육 START*/}
-        <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="w-10 h-10 text-white p-2 bg-green-500 rounded-full"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"
-            />
-          </svg>
-        </div>
-        <div className="mb-8 leading-relaxed">
-          <h2>교육</h2>
-          <a>
-            2016.10 ~ 2017.04 [NCS] 기업이 요구하느느 자바 웹 개발자 양성과정 /
-            KH정보교육원{" "}
-          </a>
-          <br />
-        </div>
-        {/* 05. 교육 END*/}
+        {/* 04. 학력, 교육 END*/}
 
         <div className="flex justify-center">
           <Link legacyBehavior href="/projects">
