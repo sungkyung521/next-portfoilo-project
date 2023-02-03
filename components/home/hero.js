@@ -149,7 +149,7 @@ export default function Hero() {
           <br />
           <a>1990.05.21</a>
           <br />
-          <a>010-8711-1631</a>
+          <a>010-</a>
           <br />
         </div>
         {/* 03. 기본인적사항 END*/}
