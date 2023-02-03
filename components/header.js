@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 //theme :현재 값 가져오기
 //setTheme :현재 값 바꾸기
 export default function Header() {
+
   const { theme } = useTheme();
   console.log(theme == "dark" ? true : false);
 
@@ -13,8 +14,7 @@ export default function Header() {
     <>
       <header
         className={
-          "text-gray-400 body-font " +
-          (theme === "dark" ? "header-bg-color-w" : "header-bg-color-d")
+          "text-gray-400 body-font header-bg-color "
         }
       >
         <div className=" container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">

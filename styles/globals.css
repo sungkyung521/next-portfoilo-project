@@ -10,7 +10,6 @@ Header {
     right: 0;
     height: 110px;
     padding: 1rem;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,14 +22,11 @@ Header {
 }
 
 
-.header-bg-color-d{
-    background-color: black;
-    color: white;
+.header-bg-color{
+    @apply bg-indigo-500 dark:bg-white
+
+   
     
-}
-.header-bg-color-w{
-    background-color: white;
-    color: black;
 }
 
 .bg-primary {

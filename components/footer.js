@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
             <Link legacyBehavior href="/">
               <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                <span className="ml-3 text-xl">Kim Sung Kyung</span>
+                <span className="ml-3 text-xl">SungKYung Kim</span>
               </a>
             </Link>
             <p className="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">
@@ -28,7 +28,7 @@ export default function Footer() {
                   fill="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokelidth="2"
+                  strokeWidth="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -40,7 +40,7 @@ export default function Footer() {
                   fill="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokelidth="2"
+                  strokeWidth="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -53,7 +53,7 @@ export default function Footer() {
                   stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokelidth="2"
+                  strokeWidth="2"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
@@ -67,7 +67,7 @@ export default function Footer() {
                   stroke="currentColor"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokelidth="0"
+                  strokeWidth="0"
                   className="w-5 h-5"
                   viewBox="0 0 24 24"
                 >
