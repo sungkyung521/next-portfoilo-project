@@ -1,20 +1,28 @@
 import Animation from "./animation";
 import Link from "next/link";
+import Image from 'next/image';
 
 export default function Hero() {
   return (
     <>
-      <div className="bg-[#0e1a2b] text-white w-full">
-        {/* 🧱 풀 와이드 배경 이미지 */}
-        <div
-          className="w-full h-[1500px] bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/hero-logistics.jpg')" }}
-        ></div>
-      </div>
+      <section className="relative w-full h-[45vh] overflow-hidden">
+        <Image
+          src="/hero-logistics.jpg"
+          alt="Hero Background"
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+          priority
+        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
+          <h1 className="text-white text-2xl font-bold text-center leading-tight">
+            WELCOME TO<br />MY PAGE
+          </h1>
+        </div>
+      </section>
 
       <div className="flex flex-col md:flex-row justify-between items-center w-full px-8 md:px-16 lg:px-32 py-12 gap-12">
         {/* 왼쪽 텍스트 */}
-       <div className="w-full md:w-1/5 space-y-6 text-white">
+        <div className="w-full md:w-1/5 space-y-6 text-white">
           <div className="flex items-center gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -72,8 +80,7 @@ export default function Hero() {
 
           <div className="border-t border-gray-300 dark:border-gray-700 pt-4">
             <p className="italic text-blue-800 dark:text-blue-200">
-              💡 제가 추구하는 개발자는 단순히 기능을 만드는 사람이 아니라,<br />
-              문제를 해결하고 가치를 전달하는 사람입니다.
+              💡 제가 추구하는 개발자는 단순히 기능을 만드는 사람이 아니라, 문제를 해결하고 가치를 전달하는 사람입니다.
             </p>
             <p className="mt-1">그런 개발자로 오늘도 한 걸음 더 성장합니다.</p>
           </div>
@@ -317,28 +324,26 @@ export default function Hero() {
             <h1 className="text-2xl font-bold text-black dark:text-white">Education</h1>
           </div>
           <p>📘 2016.10 ~ 2017.04
-            <br/>
+            <br />
             [NCS] 기업이 요구하는 자바 웹 개발자 양성과정 / KH정보교육원
           </p>
 
           <p>🎓 2016.03 ~ 2017.02
-            <br/>
+            <br />
             서일대학교 컴퓨터소프트웨어학과 (전공심화) 졸업 / 평점: 4.44 (4.5)
           </p>
 
           <p>🎓 2011.03 ~ 2016.02
-            <br/>
+            <br />
             서일대학교 인터넷정보과 졸업 / 평점: 4.06 (4.5)
           </p>
 
           <p>🏫 2006.03 ~ 2009.02
-            <br/>
+            <br />
             덕소고등학교 (인문계)
           </p>
 
         </div>
-
-
 
       </div>
 
@@ -348,8 +353,11 @@ export default function Hero() {
           <a className="btn-project">Go To Projects</a>
         </Link>
       </div>
-      <br/>
-      <br/>
+      <br />
+      <br />
+
+
+
 
     </>
   );
