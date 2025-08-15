@@ -21,8 +21,14 @@ export default function Projects({projects}) {
                     <span className="pl-4 text-blue-500">{projects.results.length}</span>
                 </h1>   
                 <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-  ※ 본 프로젝트에 사용된 기업 CI는 개인 포트폴리오 작성 목적의 비상업적 사용이며, 권리는 해당 기업에 귀속됩니다.
-</p>     
+                ※ 본 프로젝트에 사용된 기업 CI는 개인 포트폴리오 작성 목적의 비상업적 사용이며, 권리는 해당 기업에 귀속됩니다.
+                </p>  
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                ※ CI가 공식적으로 제공되지 않은 기업의 경우, 해당 기업명을 단순 텍스트 형태로 대체하여 표기하였습니다.
+                </p>  
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                ※ 이는 상업적 목적이 아닌 개인 포트폴리오 용도에 한하여 사용됩니다.
+                </p>                      
                 
                 <div className="grid grid-cols-1 gap-8 p-12 m-4 md:grid-cols-4">
                     {projects.results.map((aProject) => (
