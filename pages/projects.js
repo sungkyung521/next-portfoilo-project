@@ -19,7 +19,10 @@ export default function Projects({projects}) {
                 <h1 className="text-4xl font-bold sm:text-2xl">
                     ALL PROJECTS :
                     <span className="pl-4 text-blue-500">{projects.results.length}</span>
-                </h1>        
+                </h1>   
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+  ※ 본 프로젝트에 사용된 기업 CI는 개인 포트폴리오 작성 목적의 비상업적 사용이며, 권리는 해당 기업에 귀속됩니다.
+</p>     
                 
                 <div className="grid grid-cols-1 gap-8 p-12 m-4 md:grid-cols-4">
                     {projects.results.map((aProject) => (
