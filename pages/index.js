@@ -243,6 +243,7 @@ export default function Home({ projects }) {
             {list.map((p, i) => {
               const inner = (
                 <>
+                  {p.image && <img className="pcimg" src={p.image} alt={p.title} loading="lazy" />}
                   <span className="tag pco">{p.category}</span>
                   <h3>{p.title}</h3>
                   <p>{p.desc}</p>
@@ -310,6 +311,7 @@ export async function getStaticProps() {
             tags,
             github: pr.Github?.url || null,
             category: period,
+            image: r.cover?.file?.url || r.cover?.external?.url || null,
           };
         });
       } else { console.error("Notion API 응답 오류:", data); }

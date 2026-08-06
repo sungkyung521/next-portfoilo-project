@@ -114,6 +114,7 @@ html.dark{
 @media(min-width:640px){.pf .pgrid{grid-template-columns:1fr 1fr}}
 .pf .pc{background:var(--panel);padding:24px;transition:.18s}
 .pf .pc:hover{background:color-mix(in srgb,var(--safety) 14%,var(--panel))}
+.pf .pc .pcimg{width:100%;height:120px;object-fit:contain;background:#fff;border:1px solid var(--rule);border-radius:2px;padding:12px;margin-bottom:16px;display:block}
 .pf .pc .pco{color:var(--stop)}
 .pf .pc h3{font-family:var(--display);font-size:1.15rem;margin:10px 0 8px}
 .pf .pc p{font-size:.9rem;color:var(--ink60);margin-bottom:14px}
