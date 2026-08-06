@@ -97,21 +97,30 @@ export default function Home({ projects }) {
     const iv1 = setInterval(divert, 1300), iv2 = setInterval(inject, 1500);
     cleanups.push(() => { cancelAnimationFrame(raf); clearInterval(iv1); clearInterval(iv2); });
 
-    /* ── 타임라인 (라벨 트랙) ── */
-    const TL = [
+    /* ── 타임라인 : 실제 노션 프로젝트로 구성 (없으면 예시) ── */
+    const EX_TL = [
       ["WCS 휠소터 실시간 제어", "C# · Oracle · 진행중", "2021-07-01", null],
-      ["장기 유지보수 · 운영 대응", "Operation", "2017-05-10", "2025-12-31"],
       ["ECS 설비 통합 제어", "C++ · MFC", "2019-01-01", "2022-02-28"],
       ["물류센터 구축 · SAT", "Integration", "2019-05-01", "2022-07-31"],
-      ["해외 현장 (헝가리 · 태국)", "On-site", "2020-06-01", "2021-11-30"],
       ["소터 증설 · 개조 공사", "C#", "2023-04-03", "2023-11-30"],
       ["실시간 모니터링 대시보드", "React · Next.js", "2024-09-18", "2025-08-29"],
       ["신규 시스템 개발 · 진행중", "Design", "2026-01-01", null],
     ];
-    const MIN = Date.parse("2017-01-01"), MAX = Date.parse("2026-12-31"), TODAY = Date.parse("2026-08-06"), span = MAX - MIN;
+    const TODAY = Date.parse("2026-08-06");
+    const TL = (projects && projects.length)
+      ? projects.filter((p) => p.start).map((p) => [
+          ((p.title || "").replace(/^Project\s*\d+\s*[-·]?\s*/i, "").trim() || p.title || "프로젝트"),
+          (p.tags || []).slice(0, 4).join(" · "),
+          p.start, p.end,
+        ]).sort((a, b) => Date.parse(a[2]) - Date.parse(b[2]))
+      : EX_TL;
+    const _starts = TL.map((r) => Date.parse(r[2])).filter((n) => !isNaN(n));
+    const minY = _starts.length ? new Date(Math.min.apply(null, _starts)).getFullYear() : 2017;
+    const maxY = 2026;
+    const MIN = Date.parse(minY + "-01-01"), MAX = Date.parse((maxY + 1) + "-01-01"), span = MAX - MIN;
     const pct = (t) => (t - MIN) / span * 100;
     let ylab = "", grid = "";
-    for (let y = 2017; y <= 2026; y++) { const L = pct(Date.parse(y + "-01-01")); grid += '<div class="gl" style="left:' + L + '%"></div>'; if (y % 2 === 1 || y === 2026) ylab += '<span style="left:' + L + '%">' + (y === 2026 ? "'26" : y) + "</span>"; }
+    for (let y = minY; y <= maxY; y++) { const L = pct(Date.parse(y + "-01-01")); grid += '<div class="gl" style="left:' + L + '%"></div>'; if ((y - minY) % 2 === 0 || y === maxY) ylab += '<span style="left:' + L + '%">' + (y === maxY ? "'" + String(maxY).slice(2) : y) + "</span>"; }
     const yearsEl = q("#pf-tl2years"), gridEl = q("#pf-tl2grid"), nowEl = q("#pf-tl2now"), rowsEl = q("#pf-tl2rows");
     if (yearsEl) yearsEl.innerHTML = ylab;
     if (gridEl) gridEl.insertAdjacentHTML("afterbegin", grid);
@@ -134,7 +143,7 @@ export default function Home({ projects }) {
     cleanups.push(() => io.disconnect());
 
     return () => cleanups.forEach((fn) => fn());
-  }, []);
+  }, [projects]);
 
   const list = projects && projects.length ? projects : EXAMPLE_PROJECTS;
   const usingNotion = projects && projects.length > 0;
@@ -312,6 +321,8 @@ export async function getStaticProps() {
             github: pr.Github?.url || null,
             category: period,
             image: r.cover?.file?.url || r.cover?.external?.url || null,
+            start: start || null,
+            end: end || null,
           };
         });
       } else { console.error("Notion API 응답 오류:", data); }
