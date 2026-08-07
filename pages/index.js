@@ -315,8 +315,8 @@ export async function getStaticProps() {
           const end = pr.WorkPeriod?.date?.end;
           const period = start ? (start.slice(0, 7) + (end ? " ~ " + end.slice(0, 7) : " ~")) : (tags[0] || "PROJECT");
           return {
-            title: pr.이름?.title?.[0]?.plain_text || "제목 없음",
-            desc: pr.Remark?.rich_text?.[0]?.plain_text || "",
+            title: (pr.이름?.title || []).map((t) => t.plain_text).join("").trim() || "제목 없음",
+            desc: (pr.Remark?.rich_text || []).map((t) => t.plain_text).join(""),
             tags,
             github: pr.Github?.url || null,
             category: period,
