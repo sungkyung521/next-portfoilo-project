@@ -297,7 +297,7 @@ export default function Home({ projects }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let projects = [];
   try {
     if (TOKEN && DATABASE_ID) {
@@ -328,5 +328,6 @@ export async function getStaticProps() {
       } else { console.error("Notion API 응답 오류:", data); }
     }
   } catch (e) { console.error("Notion fetch 실패:", e); }
-  return { props: { projects }, revalidate: 300 };
+  // SSR: 매 요청마다 노션 커버(만료되는 S3 서명 URL)를 새로 발급받아 이미지 만료 방지
+  return { props: { projects } };
 }
