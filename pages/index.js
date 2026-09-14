@@ -35,18 +35,22 @@ export default function Home({ projects }) {
     /* ── 소터 애니 ── */
     const LOOP = "M 150 40 L 690 40 A 40 40 0 0 1 690 120 L 150 120 A 40 40 0 0 1 150 40 Z";
     const CHUTES = [[210,"실행","n"],[270,"습관","n"],[330,"꼼꼼","n"],[390,"해결","n"],[450,"소통","n"],[510,"고객","n"],[570,"신뢰","n"],[630,"미룸","reject"],[690,"성장","recycle"]];
-    const g = q("#pf-chutes"), boxByX = {};
+    const g = q("#pf-chutes"), boxByX = {}, chuteRefs = [];
     if (g) {
       for (const [x, label, kind] of CHUTES) {
         const cls = "chute-" + (kind === "reject" ? "reject" : kind === "recycle" ? "recycle" : "n");
-        g.append(set(document.createElementNS(NS, "line"), { class: cls, x1: x, y1: 128, x2: x, y2: 164, "stroke-width": 5, "stroke-linecap": "round" }));
+        const ln = set(document.createElementNS(NS, "line"), { class: cls, x1: x, y1: 128, x2: x, y2: 164, "stroke-width": 5, "stroke-linecap": "round" });
+        g.append(ln);
         const box = set(document.createElementNS(NS, "rect"), { class: cls + " chute-box", x: x - 13, y: 164, width: 26, height: 16, rx: 2, fill: "none", "stroke-width": 1.5 });
         g.append(box); boxByX[x] = box;
         const t = document.createElementNS(NS, "text"); set(t, { class: cls, x: x, y: 194, "text-anchor": "middle", "font-size": 10 }); t.textContent = label; g.append(t);
+        if (kind !== "reject" && kind !== "recycle") chuteRefs.push({ x, ln, t });
       }
     }
     const cg = q("#pf-carriers"), loopEl = q("#pf-loop");
-    let raf = 0;
+    const svgEl = root.querySelector(".hero figure svg");
+    const BASE = 100 / 15;
+    let raf = 0, speed = BASE, target = BASE;
     if (cg && loopEl) {
       const LOOPLEN = loopEl.getTotalLength();
       const CARRIERS = [[0,1],[9,0],[18,1],[27,1],[36,0],[45,1],[54,0],[63,1],[72,1],[81,0],[90,1]];
@@ -58,14 +62,40 @@ export default function Home({ projects }) {
       let last = performance.now();
       const tick = (now) => {
         const dt = Math.min((now - last) / 1000, 0.05); last = now;
+        speed += (target - speed) * Math.min(dt * 4, 1);   // 목표속도로 부드럽게 수렴
         for (const c of carriers) {
-          c.off = (c.off - dt * (100 / 15) + 100) % 100;   // 시계 반대방향
+          c.off = (c.off - dt * speed + 100) % 100;   // 시계 반대방향
           const p = loopEl.getPointAtLength((c.off / 100) * LOOPLEN);
           c.el.setAttribute("transform", "translate(" + p.x + "," + p.y + ")");
         }
         raf = requestAnimationFrame(tick);
       };
       raf = requestAnimationFrame(tick);
+    }
+    /* 소터 반응 : 마우스 좌우로 벨트 속도 + 가까운 슈트 하이라이트 (터치 제외) */
+    if (svgEl && chuteRefs.length) {
+      const onMove = (e) => {
+        if (e.pointerType === "touch") return;
+        const r = svgEl.getBoundingClientRect();
+        const mx = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+        target = BASE * (0.55 + mx * 2);
+        const sx = mx * 760;
+        let near = null, nd = 1e9;
+        for (const c of chuteRefs) { const d = Math.abs(c.x - sx); if (d < nd) { nd = d; near = c; } }
+        for (const c of chuteRefs) {
+          const on = c === near && nd < 46;
+          c.ln.style.stroke = on ? "var(--safety)" : "";
+          c.ln.setAttribute("stroke-width", on ? 7 : 5);
+          c.t.style.fill = on ? "var(--safety)" : "";
+        }
+      };
+      const onLeave = () => {
+        target = BASE;
+        for (const c of chuteRefs) { c.ln.style.stroke = ""; c.ln.setAttribute("stroke-width", 5); c.t.style.fill = ""; }
+      };
+      svgEl.addEventListener("pointermove", onMove);
+      svgEl.addEventListener("pointerleave", onLeave);
+      cleanups.push(() => { svgEl.removeEventListener("pointermove", onMove); svgEl.removeEventListener("pointerleave", onLeave); });
     }
     const dg = q("#pf-diverts"), ig = q("#pf-inductions");
     const NORMALX = CHUTES.filter((c) => c[2] === "n").map((c) => c[0]);
@@ -142,6 +172,40 @@ export default function Home({ projects }) {
     root.querySelectorAll(".reveal").forEach((el, i) => { el.style.transitionDelay = Math.min(i, 6) * 40 + "ms"; io.observe(el); });
     cleanups.push(() => io.disconnect());
 
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+    /* ── 프로젝트 카드 커서 3D 틸트 (터치 제외) ── */
+    if (!reduce) root.querySelectorAll(".pc").forEach((card) => {
+      const move = (e) => {
+        if (e.pointerType === "touch") return;
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        card.style.transition = "transform .08s ease-out";
+        card.style.transform = "perspective(760px) rotateX(" + ((0.5 - py) * 7).toFixed(2) + "deg) rotateY(" + ((px - 0.5) * 9).toFixed(2) + "deg)";
+        card.style.setProperty("--gx", (px * 100) + "%");
+        card.style.setProperty("--gy", (py * 100) + "%");
+        card.classList.add("tilt");
+      };
+      const leave = () => { card.style.transition = "transform .3s ease"; card.style.transform = ""; card.classList.remove("tilt"); };
+      card.addEventListener("pointermove", move);
+      card.addEventListener("pointerleave", leave);
+      cleanups.push(() => { card.removeEventListener("pointermove", move); card.removeEventListener("pointerleave", leave); });
+    });
+
+    /* ── 통계 카운트업 (스크롤 진입 시 1회) ── */
+    const statWrap = q(".stats");
+    if (statWrap) {
+      const run = () => root.querySelectorAll(".stats dd[data-count]").forEach((dd) => {
+        const to = parseInt(dd.getAttribute("data-count"), 10), v = dd.querySelector(".cv"); if (!v) return;
+        if (reduce) { v.textContent = to; return; }
+        const t0 = performance.now(), dur = 1100;
+        const step = (now) => { const t = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - t, 3); v.textContent = Math.round(e * to); if (t < 1) requestAnimationFrame(step); };
+        requestAnimationFrame(step);
+      });
+      const sio = new IntersectionObserver((es) => es.forEach((ev) => { if (ev.isIntersecting) { run(); sio.unobserve(ev.target); } }), { threshold: 0.4 });
+      sio.observe(statWrap); cleanups.push(() => sio.disconnect());
+    }
+
     return () => cleanups.forEach((fn) => fn());
   }, [projects]);
 
@@ -172,7 +236,7 @@ export default function Home({ projects }) {
       <main className="wrap">
         <section className="hero">
           <p className="tag reveal">물류 자동화 시스템 엔지니어 · 2016 – 현재</p>
-          <h1 className="disp hero-t reveal">라인은<br />멈추지 않는다</h1>
+          <h1 className="disp hero-t hero-reveal"><span className="hl">라인은</span><span className="hl hl2">멈추지 않는다</span></h1>
           <p className="lede reveal">컨베이어 한 대가 멈추면 라인 전체가 멈춥니다. 10년간 그 라인을 멈추지 않게 만드는 일을 했습니다. WCS · ECS 물류 자동화 시스템을 설계하고 설비를 실시간으로 제어합니다.</p>
 
           <figure className="reveal">
@@ -190,8 +254,8 @@ export default function Home({ projects }) {
           </figure>
 
           <dl className="stats reveal">
-            <div><dt className="tag">현장 프로젝트</dt><dd>19건</dd></div>
-            <div><dt className="tag">고객 사이트</dt><dd>10곳</dd></div>
+            <div><dt className="tag">현장 프로젝트</dt><dd data-count="19"><span className="cv">0</span>건</dd></div>
+            <div><dt className="tag">고객 사이트</dt><dd data-count="10"><span className="cv">0</span>곳</dd></div>
             <div><dt className="tag">해외 현장</dt><dd>헝가리 · 태국</dd></div>
           </dl>
         </section>
