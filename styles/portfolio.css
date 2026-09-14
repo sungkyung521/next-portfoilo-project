@@ -147,3 +147,51 @@ html.dark{
 .pf .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
 .pf .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.pf .reveal{opacity:1;transform:none}}
+
+/* ── 폴리시 (2026-09-15) : 스크롤 커브 다듬기 + 마이크로 인터랙션 ──
+   ★기존 규칙은 그대로 두고 이 블록만 추가(뒤에 와서 덮음). 되돌리려면 이 블록만 삭제. */
+
+/* A. reveal 커브 — 조금 더 멀리서 부드럽게 정착 */
+.pf .reveal{transform:translateY(24px) scale(.985);
+    transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+
+/* nav 링크 : 세이프티 밑줄 슬라이드 */
+.pf nav .links a{position:relative}
+.pf nav .links a::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1.5px;
+    background:var(--safety);transform:scaleX(0);transform-origin:left;
+    transition:transform .25s cubic-bezier(.2,.7,.2,1)}
+.pf nav .links a:hover::after{transform:scaleX(1)}
+
+/* 프로젝트 카드 : 상단 세이프티 바 + 타이틀 강조 + 태그 반응 (그리드 1px갭 유지 위해 리프트 대신 인셋 강조) */
+.pf .pc{position:relative;overflow:hidden}
+.pf .pc::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--safety);
+    transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.pf .pc:hover::before{transform:scaleX(1)}
+.pf .pc h3{transition:color .18s ease}
+.pf .pc:hover h3{color:var(--stop)}
+.pf .pc .pt span{transition:border-color .18s ease}
+.pf .pc:hover .pt span{border-color:color-mix(in srgb,var(--safety) 60%,var(--rule))}
+
+/* 스택 키워드 : hover 세이프티 밑줄 */
+.pf .skill li{transition:color .15s ease}
+.pf .skill li:hover{text-decoration:underline;text-decoration-color:var(--safety);
+    text-decoration-thickness:2px;text-underline-offset:3px}
+
+/* 통계 타일 : hover 세이프티 틴트 */
+.pf .stats>div{transition:background .18s ease}
+.pf .stats>div:hover{background:color-mix(in srgb,var(--safety) 10%,var(--panel))}
+
+/* 버튼 : 살짝 리프트 + 채움버튼 글로우 */
+.pf .btn{transition:background .15s ease,color .15s ease,transform .15s ease,box-shadow .15s ease}
+.pf .btn:hover{transform:translateY(-2px)}
+.pf .btn.fill:hover{box-shadow:0 6px 18px -8px color-mix(in srgb,var(--safety) 70%,transparent)}
+
+/* 테마 토글 : hover 회전 */
+.pf .tgl{transition:background .15s ease,color .15s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
+.pf .tgl:hover{transform:rotate(180deg)}
+
+@media (prefers-reduced-motion:reduce){
+  .pf .reveal{transform:none}
+  .pf .btn:hover,.pf .tgl:hover{transform:none}
+  .pf .pc::before,.pf nav .links a::after{transition:none}
+}
