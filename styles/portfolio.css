@@ -214,3 +214,19 @@ html.dark{
   .pf .pc{transform:none!important}
   .pf .pc::after{display:none}
 }
+
+/* 1C. 히어로 타이틀 : 빛 스윕 마스크 등장 (로드 시 1회) */
+.pf .hero-reveal .hl{display:block;
+    -webkit-mask-image:linear-gradient(100deg,#000 0 40%,rgba(0,0,0,.15) 50%,#000 60% 100%);
+    mask-image:linear-gradient(100deg,#000 0 40%,rgba(0,0,0,.15) 50%,#000 60% 100%);
+    -webkit-mask-size:280% 100%;mask-size:280% 100%;
+    -webkit-mask-position:120% 0;mask-position:120% 0;
+    opacity:0;animation:pf-sweep 1.15s cubic-bezier(.5,0,.2,1) forwards}
+.pf .hero-reveal .hl2{animation-delay:.1s}
+@keyframes pf-sweep{
+  0%{opacity:0;-webkit-mask-position:120% 0;mask-position:120% 0}
+  15%{opacity:1}
+  100%{opacity:1;-webkit-mask-position:-40% 0;mask-position:-40% 0}}
+@media (prefers-reduced-motion:reduce){
+  .pf .hero-reveal .hl{-webkit-mask-image:none;mask-image:none;opacity:1;animation:none}
+}

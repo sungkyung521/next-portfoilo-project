@@ -236,7 +236,7 @@ export default function Home({ projects }) {
       <main className="wrap">
         <section className="hero">
           <p className="tag reveal">물류 자동화 시스템 엔지니어 · 2016 – 현재</p>
-          <h1 className="disp hero-t reveal">라인은<br />멈추지 않는다</h1>
+          <h1 className="disp hero-t hero-reveal"><span className="hl">라인은</span><span className="hl hl2">멈추지 않는다</span></h1>
           <p className="lede reveal">컨베이어 한 대가 멈추면 라인 전체가 멈춥니다. 10년간 그 라인을 멈추지 않게 만드는 일을 했습니다. WCS · ECS 물류 자동화 시스템을 설계하고 설비를 실시간으로 제어합니다.</p>
 
           <figure className="reveal">
