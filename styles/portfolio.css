@@ -195,3 +195,22 @@ html.dark{
   .pf .btn:hover,.pf .tgl:hover{transform:none}
   .pf .pc::before,.pf nav .links a::after{transition:none}
 }
+
+/* ── 화려한 효과 (2026-09-15, PM 승인 2·3·4) ── */
+
+/* 2. 통계 카운트업 : 숫자 폭 고정(지터 방지) */
+.pf .stats dd{font-variant-numeric:tabular-nums}
+
+/* 3. 프로젝트 카드 커서 3D 틸트 + 세이프티 광택 */
+.pf .pc{transform-style:preserve-3d}
+.pf .pc.tilt{will-change:transform;z-index:2}
+.pf .pc::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
+    transition:opacity .2s ease;
+    background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),
+        color-mix(in srgb,var(--safety) 42%,transparent),transparent 42%)}
+.pf .pc.tilt::after{opacity:.5}
+
+@media (prefers-reduced-motion:reduce){
+  .pf .pc{transform:none!important}
+  .pf .pc::after{display:none}
+}
