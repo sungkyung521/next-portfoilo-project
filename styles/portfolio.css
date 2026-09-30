@@ -230,3 +230,15 @@ html.dark{
 @media (prefers-reduced-motion:reduce){
   .pf .hero-reveal .hl{-webkit-mask-image:none;mask-image:none;opacity:1;animation:none}
 }
+
+/* ── ② 배경/여백 폴리시 (2026-09-30, 디자인 감각 패스) ──
+   밋밋한 단색 concrete → 아주 옅은 블루프린트 그리드로 산업 도면 질감(가독 방해 0). 되돌리려면 이 블록만 삭제. */
+.pf{
+  background-image:
+    linear-gradient(color-mix(in srgb,var(--galvan) 7%,transparent) 1px,transparent 1px),
+    linear-gradient(90deg,color-mix(in srgb,var(--galvan) 7%,transparent) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+/* 섹션 라벨 살짝 강조(세이프티 티크) */
+.pf .seclabel h2::before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;
+  background:var(--safety);vertical-align:baseline;transform:translateY(1px)}
